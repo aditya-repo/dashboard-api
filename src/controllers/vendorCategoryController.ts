@@ -1,5 +1,5 @@
 import { Request, Response } from "express";
-import VendorCategory from "../models/VendorCategory";
+import { VendorCategory } from "../models/VendorCategory";
 
 export const createVendorCategory = async (
   req: Request,

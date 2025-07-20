@@ -1,17 +1,17 @@
 import mongoose, { Schema, Document, Types } from "mongoose";
-import { ISubcategory } from "./Subcategory";
 
-export interface IVendorCategory extends Document {
-  categoryId: string;
+export interface ISubcategory extends Document {
+  subcategoryId: string;
   name: string;
   slug: string;
   description?: string;
-  subcategories: Types.ObjectId[] | ISubcategory[];
+  status: boolean;
+  categoryid: Types.ObjectId;
 }
 
-const VendorCategorySchema = new Schema<IVendorCategory>(
+const SubcategorySchema = new Schema<ISubcategory>(
   {
-    categoryId: {
+    subcategoryId: {
       type: String,
       required: true,
       unique: true,
@@ -20,7 +20,6 @@ const VendorCategorySchema = new Schema<IVendorCategory>(
     name: {
       type: String,
       required: true,
-      unique: true,
       trim: true,
       minlength: 2,
       maxlength: 50,
@@ -33,17 +32,17 @@ const VendorCategorySchema = new Schema<IVendorCategory>(
       maxlength: 100,
     },
     description: { type: String, trim: true, maxlength: 200 },
-    subcategories: [
-      {
-        type: Schema.Types.ObjectId,
-        ref: "Subcategory",
-      },
-    ],
+    status: { type: Boolean, default: true },
+    categoryid: {
+      type: Schema.Types.ObjectId,
+      ref: "VendorCategory",
+      required: true,
+    },
   },
   { timestamps: true }
 );
 
-export const VendorCategory = mongoose.model<IVendorCategory>(
-  "VendorCategory",
-  VendorCategorySchema
+export const Subcategory = mongoose.model<ISubcategory>(
+  "Subcategory",
+  SubcategorySchema
 );

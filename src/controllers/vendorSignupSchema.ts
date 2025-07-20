@@ -1,6 +1,6 @@
 import { Request, Response } from "express";
 import VendorField from "../models/VendorField";
-import VendorCategory from "../models/VendorCategory";
+import { VendorCategory } from "../models/VendorCategory";
 
 // ✅ Controller to create a dynamic form field for a vendor category
 export const createVendorFormField = async (
@@ -8,8 +8,7 @@ export const createVendorFormField = async (
   res: Response
 ): Promise<void> => {
   try {
-    const {
-      vendorTypeId,
+    const { vendorTypeId,
       fieldName,
       labelName,
       placeholder,
