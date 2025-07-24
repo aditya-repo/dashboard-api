@@ -5,7 +5,7 @@ import VendorFieldValue, {
   IVendorFieldValue,
 } from "../models/VendorFieldValue";
 import VendorField from "../models/VendorField";
-import Client from "../models/Client";
+import Client from "../models/Manager";
 
 export const signupVendor = async (
   req: Request,

@@ -1,5 +1,5 @@
 import Vendor, { IVendor } from "../models/Vendor";
-import Client from "../models/Client";
+import Client from "../models/Manager";
 import VendorType from "../models/VendorType";
 import { Types } from "mongoose";
 

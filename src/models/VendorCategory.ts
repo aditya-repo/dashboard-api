@@ -32,7 +32,11 @@ const VendorCategorySchema = new Schema<IVendorCategory>(
       trim: true,
       maxlength: 100,
     },
-    description: { type: String, trim: true, maxlength: 200 },
+    description: {
+      type: String,
+      trim: true,
+      maxlength: 200,
+    },
     subcategories: [
       {
         type: Schema.Types.ObjectId,
