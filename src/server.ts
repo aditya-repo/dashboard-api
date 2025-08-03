@@ -4,9 +4,12 @@ import adminVendorCategoryRoutes from "./routes/admin/vendorCategory";
 import { errorHandler } from "./middlewares/errorHandler";
 import adminBlogRoutes from "./routes/admin/blog";
 import adminVendorRoutes from "./routes/admin/vendor";
-import vendorPanelRoutes from "./routes/vendor/vendor";
+import adminVendorProfileRoutes from "./routes/admin/vendorProfile";
+import vendorSignupRoutes from "./routes/vendor/vendorSignup";
+import vendorProfileRoutes from "./routes/vendor/vendorProfile";
 import vendorHelpdeskRoutes from "./routes/vendor/helpdesk";
 import adminHelpdeskRoutes from "./routes/admin/helpdesk";
+import publicVendorRoutes from "./routes/public/vendor";
 import adminManagerRoutes from "./routes/admin/manager";
 import path from "path";
 import cors from "cors";
@@ -24,13 +27,20 @@ app.use(cors());
 app.use("/api/admin/category", adminVendorCategoryRoutes);
 app.use("/api/admin/blogs", adminBlogRoutes);
 app.use("/api/admin/vendors", adminVendorRoutes);
+app.use("/api/admin/vendor-profiles", adminVendorProfileRoutes);
 app.use("/api/admin/managers", adminManagerRoutes);
 
-// Vendor panel routes
-app.use("/api/vendor", vendorPanelRoutes);
+// Vendor authentication routes
+app.use("/api/vendor", vendorSignupRoutes);
+
+// Vendor profile routes
+app.use("/api/vendor/profile", vendorProfileRoutes);
 
 // Vendor helpdesk routes
 app.use("/api/vendor/helpdesk", vendorHelpdeskRoutes);
+
+// Public vendor routes (no authentication required)
+app.use("/api/public/vendors", publicVendorRoutes);
 
 // Admin helpdesk routes
 app.use("/api/admin/helpdesk", adminHelpdeskRoutes);
